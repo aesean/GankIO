@@ -45,12 +45,6 @@ public class Type1ViewHolder extends Type0ViewHolder {
         }
         PictureViewAdapter viewAdapter = new PictureViewAdapter(list);
         viewPager.setAdapter(viewAdapter);
-        viewPager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openWebView();
-            }
-        });
         itemView.findViewById(R.id.bottom_container_2)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override

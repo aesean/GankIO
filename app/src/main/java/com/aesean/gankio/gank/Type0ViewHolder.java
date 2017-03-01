@@ -29,7 +29,7 @@ public class Type0ViewHolder extends BaseViewHolder<Result> {
     }
 
     public Type0ViewHolder(ViewGroup parent) {
-        super(parent, R.layout.item_gank);
+        this(parent, R.layout.item_gank);
     }
 
     protected void openWebView() {
