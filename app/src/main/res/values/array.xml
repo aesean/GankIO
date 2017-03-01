@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="swipe_refresh_color_scheme">
+        <item>@color/red500</item>
+        <item>@color/blue500</item>
+        <item>@color/yellow500</item>
+        <item>@color/cyan500</item>
+        <item>@color/green500</item>
+    </integer-array>
+</resources>

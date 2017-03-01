@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GankIO</string>
+    <string name="tab_title_android">Android</string>
+    <string name="tab_title_ios">iOS</string>
+    <string name="tab_title_front">前端</string>
+    <string name="menu_search">搜索</string>
+    <string name="label_action_share">分享</string>
+    <string name="load_data_fail">数据加载失败</string>
+</resources>
