@@ -27,3 +27,7 @@
 -keep public class com.aesean.gankio.api.model.*{
     *;
 }
+# fuck SearchView always null
+-keep public class android.support.v7.widget.SearchView{
+    *;
+}

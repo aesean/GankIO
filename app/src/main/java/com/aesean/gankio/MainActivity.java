@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -43,36 +44,29 @@ public class MainActivity extends AppBaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
-
         MenuItem searchItem = menu.findItem(R.id.action_search);
-
         SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
-
-        if (searchItem != null) {
-            SearchView searchView = (SearchView) searchItem.getActionView();
-            if (searchView != null) {
-                searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        Fragment fragment = mPagerAdapter.getItem(mViewPager.getCurrentItem());
-                        if (fragment instanceof SearchView.OnQueryTextListener) {
-                            ((SearchView.OnQueryTextListener) fragment).onQueryTextSubmit(query);
-                        }
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        Fragment fragment = mPagerAdapter.getItem(mViewPager.getCurrentItem());
-                        if (fragment instanceof SearchView.OnQueryTextListener) {
-                            ((SearchView.OnQueryTextListener) fragment).onQueryTextChange(newText);
-                        }
-                        return false;
-                    }
-                });
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Fragment fragment = mPagerAdapter.getItem(mViewPager.getCurrentItem());
+                if (fragment instanceof SearchView.OnQueryTextListener) {
+                    ((SearchView.OnQueryTextListener) fragment).onQueryTextSubmit(query);
+                }
+                return false;
             }
-        }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Fragment fragment = mPagerAdapter.getItem(mViewPager.getCurrentItem());
+                if (fragment instanceof SearchView.OnQueryTextListener) {
+                    ((SearchView.OnQueryTextListener) fragment).onQueryTextChange(newText);
+                }
+                return false;
+            }
+        });
         return true;
     }
 
